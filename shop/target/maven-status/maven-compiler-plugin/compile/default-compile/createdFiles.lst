@@ -1,1 +1,8 @@
 shop\controllers\AdminCtrl.class
+shop\entities\UserDTO.class
+shop\entities\Role.class
+shop\entities\User.class
+shop\services\IRegistrationService.class
+shop\services\RegistrationService.class
+shop\services\AuthService.class
+shop\validation\EmailExistsException.class
