@@ -13,26 +13,29 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import shop.abstracts.IRegistrationService;
+import shop.dto.UserDTO;
 import shop.entities.Role;
 import shop.entities.User;
-import shop.entities.UserDTO;
 import shop.validation.EmailExistsException;
 
 //@Service("registrationService")
 @Service
 public class RegistrationService implements IRegistrationService {
-	@Autowired
-	private SessionFactory sessionFactory;
+	private Session session;
+	//private SessionFactory sessionFactory;
 	// private HibernateTemplate hibernateTemplate;
 	private static Logger log = Logger.getLogger(AuthService.class);
 
-//	public SessionFactory getSessionFactory() {
-//		return sessionFactory;
-//	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	
+	public RegistrationService(SessionFactory sessionFactory) {
+		super();
+		this.session = sessionFactory.openSession();
 	}
+
+//	public void setSessionFactory(SessionFactory sessionFactory) {
+//		this.session = sessionFactory.openSession();
+//	}
 
 	@Transactional
 	@Override
@@ -41,8 +44,6 @@ public class RegistrationService implements IRegistrationService {
 //		if (usernameExists(accountDto.getUsername())) {
 //			throw new EmailExistsException("There is an account with that email address:  + accountDto.getEmail());");
 //		}
-		
-		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		User user = new User();
 		user.setPassword(accountDto.getPassword());
@@ -75,7 +76,6 @@ public class RegistrationService implements IRegistrationService {
 	}
 
 	private User findByUsername(String username) {
-		Session session = sessionFactory.openSession();
 		String hql = "FROM User u WHERE u.username = :uname";
 		Query query = session.createQuery(hql);
 		query.setParameter("uname", username);
@@ -83,7 +83,6 @@ public class RegistrationService implements IRegistrationService {
 		return u;
 	}
 	public List<Role> getAllRoles() {
-		Session session = sessionFactory.openSession();
 	    return session.createQuery("SELECT a FROM Role a", Role.class).getResultList();      
 	}
 }

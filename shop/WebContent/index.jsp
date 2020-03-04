@@ -9,5 +9,6 @@
 <body>
 	<h1>Hello</h1>
 	<a href="${pageContext.request.contextPath}/login">Login</a>
+	<a href="${pageContext.request.contextPath}/register">Реєстрація</a>
 </body>
 </html>

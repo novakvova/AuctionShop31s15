@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import shop.dto.UserDTO;
 import shop.entities.User;
-import shop.entities.UserDTO;
 import shop.services.RegistrationService;
 import shop.validation.EmailExistsException;
 
@@ -24,7 +24,7 @@ public class RegisterCtrl {
 	@Autowired
 	private RegistrationService registrationService;
 	
-	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegistrationForm(WebRequest request, Model model) {
 	    UserDTO userDto = new UserDTO();
 	    model.addAttribute("user", userDto);

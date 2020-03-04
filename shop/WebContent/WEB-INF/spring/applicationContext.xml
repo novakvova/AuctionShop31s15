@@ -56,9 +56,10 @@
 
 
 	<bean id="registrationService"
-		class="car.show.room.service.RegistrationService">
+		class="shop.services.RegistrationService">
 		<!-- <property name="hibernateTemplate" ref="hibernateTemplateBean" /> -->
-		<property name="sessionFactory" ref="sessionFactoryBean" />
+<!-- 		<property name="sessionFactory" ref="sessionFactoryBean" /> -->
+		<constructor-arg name="sessionFactory" ref="sessionFactoryBean"/>
 	</bean>
 
 	<!-- <bean id="productService" class="car.show.room.service.ProductService"> 
