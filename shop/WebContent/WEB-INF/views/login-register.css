@@ -1,0 +1,30 @@
+body {
+     background: url('https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.btn {
+    font-size: 18px;
+    width: auto;
+}
+
+.card {
+    width: 400px;
+    background-color: #fff6f6;
+}
+
+
+.card-header{
+    background-color: #ffffff;
+    color: rgb(83, 83, 83);
+}
+.custom-checkbox{
+    color: rgb(0, 0, 0);
+}
+
+.nav-item .nav-link[disabled]:hover {
+
+}
