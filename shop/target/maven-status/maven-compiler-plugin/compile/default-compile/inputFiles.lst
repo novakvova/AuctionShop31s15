@@ -1,9 +1,9 @@
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\dto\UserDTO.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\controllers\AdminCtrl.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\abstracts\IRegistrationService.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\validation\EmailExistsException.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\controllers\RegisterCtrl.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\entities\Role.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\services\RegistrationService.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\entities\User.java
-D:\Study\2019-2020\36. JAVA 31s15\Lesson 12. Security DI\shop\src\shop\services\AuthService.java
+D:\study\AuctionShop31s15\shop\src\shop\controllers\AdminCtrl.java
+D:\study\AuctionShop31s15\shop\src\shop\dto\UserDTO.java
+D:\study\AuctionShop31s15\shop\src\shop\services\AuthService.java
+D:\study\AuctionShop31s15\shop\src\shop\entities\Role.java
+D:\study\AuctionShop31s15\shop\src\shop\services\RegistrationService.java
+D:\study\AuctionShop31s15\shop\src\shop\validation\EmailExistsException.java
+D:\study\AuctionShop31s15\shop\src\shop\entities\User.java
+D:\study\AuctionShop31s15\shop\src\shop\abstracts\IRegistrationService.java
+D:\study\AuctionShop31s15\shop\src\shop\controllers\RegisterCtrl.java
