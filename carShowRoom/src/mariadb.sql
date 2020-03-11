@@ -1,0 +1,5 @@
+CREATE DATABASE fujitsudb;
+
+CREATE USER 'okanama'@'localhost' IDENTIFIED BY 'Qwerty1-';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, INDEX, DROP, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES ON fujitsudb.* TO 'okanama'@'localhost';

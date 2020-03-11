@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Configuring the JDBC connection -->
+
+	<bean id="dataSourceBean"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://91.238.103.30:5432/pilla_db" />
+		<property name="username" value="bug" />
+		<property name="password" value="Qwerty1-" />
+	</bean>
+
+	<bean id="sessionFactoryBean"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceBean" />
+		<!-- <property name="mappingResources"> <value>car/show/room/pojo/User.hbm.xml</value> 
+			</property> -->
+		<property name="annotatedClasses">
+			<list>
+				<value>car.show.room.pojo.User</value>
+				<value>car.show.room.pojo.Role</value>
+				<value>car.show.room.pojo.Product</value>
+				<value>car.show.room.pojo.Category</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.CharSet">utf8</prop>
+				<prop key="hibernate.connection.characterEncoding">utf8</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- <bean id="dataSourceBean" >>>>>>> dev class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver" /> <property 
+		name="url" value="jdbc:mariadb://localhost:3306/fujitsudb" /> <property name="username" 
+		value="okanama" /> <property name="password" value="Qwerty1-" /> </bean> -->
+
+	<!-- Configuring the Hibernate4 Session Factory Bean -->
+
+	<!-- <bean id="sessionFactoryBean" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSourceBean" /> <property name="mappingResources"> 
+		<value>car/show/room/pojo/User.hbm.xml</value> </property> <property name="annotatedClasses"> 
+		<list> <value>car.show.room.pojo.User</value> </list> </property> <property 
+		name="hibernateProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.MariaDBDialect</prop> 
+		<prop key="hibernate.show_sql">true</prop> <prop key="hibernate.hbm2ddl.auto">update</prop> 
+		</props> </property> </bean> -->
+
+	<!-- <bean id="hibernateTemplateBean" class="org.springframework.orm.hibernate5.HibernateTemplate"> 
+		<property name="sessionFactory" ref="sessionFactoryBean" /> </bean> -->
+
+
+	<bean id="authenticateServiceBean"
+		class="car.show.room.service.AuthService">
+		<!-- <property name="hibernateTemplate" ref="hibernateTemplateBean" /> -->
+		<property name="sessionFactory" ref="sessionFactoryBean" />
+	</bean>
+
+	<bean id="registrationService"
+		class="car.show.room.service.RegistrationService">
+		<!-- <property name="hibernateTemplate" ref="hibernateTemplateBean" /> -->
+		<property name="sessionFactory" ref="sessionFactoryBean" />
+	</bean>
+
+	<!-- <bean id="productService" class="car.show.room.service.ProductService"> 
+		property name="hibernateTemplate" ref="hibernateTemplateBean" /> <property 
+		name="sessionFactory" ref="sessionFactoryBean" /> </bean> -->
+
+	<bean id="authenticationProviderBean"
+		class="car.show.room.service.CustomAuthenticationProvider">
+		<constructor-arg index="0" ref="sessionFactoryBean" />
+	</bean>
+
+	<bean id="productService"
+		class="car.show.room.service.ProductService">
+		<constructor-arg name="sessionFactory"
+			ref="sessionFactoryBean" />
+	</bean>
+	<bean id="categoryService"
+		class="car.show.room.service.CategoryService">
+		<constructor-arg name="sessionFactory"
+			ref="sessionFactoryBean" />
+	</bean>
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg value="11" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10000000" />
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
+
+</beans>
